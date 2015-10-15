@@ -1,18 +1,14 @@
 <?php 
 require_once("clases/AccesoDatos.php");
-//require_once("clases/cd.php");
-
+require_once("clases/voto.php");
 $queHago=$_POST['queHacer'];
 
 switch ($queHago) {
-	case 'foto':
-		include("partes/imagen.php");
+	case 'votacion':
+		include("partes/formVotacion.php");
 		break;
-	case 'video':
-			include("partes/video.html");
-		break;	
-	case 'MostarBotones':
-			include("partes/botonesABM.php");
+	case 'desloguear':
+			include("php/deslogearDni.php");
 		break;
 	case 'MostrarGrilla':
 			include("partes/formGrilla.php");
@@ -21,32 +17,36 @@ switch ($queHago) {
 			include("partes/formLogin.php");
 		break;
 	case 'MostrarFormAlta':
-			include("partes/formCd.php");
+			include("partes/formVotacion.php");
 		break;
-	/*case 'BorrarCD':
-			$cd = new cd();
-			$cd->id=$_POST['id'];
-			$cantidad=$cd->BorrarCd();
+	case 'VerEnMapa':
+		include("partes/formMapa.php");
+		break;
+	case 'BorrarVoto':
+			$voto = new voto();
+			$voto->id=$_POST['id'];
+			$cantidad=$voto->Borrarvoto();
 			echo $cantidad;
-
 		break;
-	case 'GuardarCD':
-			$cd = new cd();
-			$cd->id=$_POST['id'];
-			$cd->cantante=$_POST['cantante'];
-			$cd->titulo=$_POST['titulo'];
-			$cd->año=$_POST['anio'];
-			$cantidad=$cd->GuardarCD();
+	case 'GuardarVoto':
+			session_start();
+			$voto = new voto();
+			$voto->id=$_POST['id'];
+			$voto->dni=$_SESSION['registrado'];
+			$voto->candidato=$_POST['candidato'];
+			$voto->provincia=$_POST['provincia'];
+			$voto->localidad=$_POST['localidad'];
+			$voto->direccion=$_POST['direccion'];
+			$voto->sexo=$_POST['sexo'];
+			$cantidad=$voto->Guardarvoto();
 			echo $cantidad;
-
 		break;
-	case 'TraerCD':
-			$cd = cd::TraerUnCd($_POST['id']);		
-			echo json_encode($cd) ;
-
+	case 'TraerVoto':
+			$voto = voto::TraerUnvoto($_POST['id']);		
+			echo json_encode($voto);
 		break;
-	*/
 	default:
 		# code...
 		break;
 }
+ ?>

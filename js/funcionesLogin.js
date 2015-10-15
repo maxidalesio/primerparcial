@@ -1,36 +1,36 @@
-function Login()
+function validarLogin()
 {
-	var dni = $("#dni").val();
+	//alert("Login");
+	var varDni=$("#dni").val();
+	//alert(varDni);
+	var recordar=$("#recordarme").is(':checked');
+	//alert(recordar);
 
-	var funcionAjax = $.ajax({	
-		url:"php/login.php", type:"post",
+	var funcionAjax=$.ajax({
+		url:"php/validarDni.php",
+		type:"post",
 		data:{
-		dni:dni}
-
+			recordarme:recordar,
+			dni:varDni,
+		}
 	});
 
-	funcionAjax.done(function(retorno){			
-		if(retorno)
-		alert("Bienvenido");
-		else
-			alert("No ingreso");
-
+	funcionAjax.done(function(retorno){
+		//alert("done");
+		Mostrar('MostrarFormAlta');
 	});
-
-
-}
-
-function LogOut()
-{
-
-	var funcionAjax = $.ajax({	
-		url:"php/logout.php", type:"post",
-		
+	funcionAjax.fail(function(retorno){
+		alert(retorno);	
 	});
-
-	funcionAjax.done(function(retorno){	
 	
-
+}
+function deslogear()
+{	
+	var funcionAjax=$.ajax({
+		url:"php/deslogearDni.php",
+		type:"post"		
 	});
-
+	funcionAjax.done(function(retorno){
+		MostarLogin();			
+	});	
 }

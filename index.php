@@ -21,6 +21,10 @@
 <script type="text/javascript" src="js/funcionesAjax.js"></script>
 <script type="text/javascript" src="js/funcionesLogin.js"></script>
 <script type="text/javascript" src="js/funcionesABM.js"></script>
+<script type="text/javascript" src="js/funcionesMapa.js"></script>
+<script type="text/javascript" src="js/geolocalizacionCommon.js"></script>
+<script type="text/javascript" src="js/moduloGeolocalizacion.js"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js"></script>
 
 </head>
 
@@ -37,9 +41,9 @@
 
 		<nav>
 			<ul id="main-nav" class="clearfix">
-				<li><a onclick="Mostrar('MostarLogin')" class="btn">Ingreso</a></li>
-				<li><a onclick="Mostrar()" class="btn">Ir a VOTACIÓN</a> </li>
-				<li><a onclick="Mostrar()" class="btn">Listado de Votaciones</a> </li>
+				<li><a onclick="MostarLogin()" class="btn">Ingreso</a></li>
+				<li><a onclick="Mostrar('votacion')" class="btn">Ir a VOTACIÓN</a> </li>
+				<li><a onclick="Mostrar('MostrarGrilla')" class="btn">Listado de Votaciones</a> </li>
 				
 			</ul>
 			<!-- /#main-nav --> 
@@ -57,15 +61,16 @@
 		<article  class="post clearfix">
 
 			<header  >
-				<h1 class="post-title"><a href="#">AlumnoNombre.Apellido</a></h1>
+				<h1 class="post-title"><a href="#">Martín.Simonetti</a></h1>
 				<p class="post-meta"><time class="post-date" datetime="2011-05-08" pubdate>2015</time> <em>en</em> <a href="#">UTN FRA</a></p>
 			</header>
 			<hr>
 			<div id="principal">
 
-<?php
+			<?php
+				
+			?>
 
-?>
 			</div>		
 
 		</article>
